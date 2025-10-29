@@ -7,7 +7,7 @@ app.use(express.json());
 
 // TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.
 // @docs https://docs.tosspayments.com/reference/using-api/api-keys
-const widgetSecretKey = process.env.WIDGET_SECRET_KEY || "live_gsk_Poxy1XQL8Rl2wmz9a6LlV7nO5Wml";
+const widgetSecretKey = process.env.WIDGET_SECRET_KEY || "test_gsk_Ba5PzR0ArnPDym25pW2x3vmYnNeD";
 const apiSecretKey = process.env.API_SECRET_KEY || "live_sk_d26DlbXAaV0dZYoDlY4VqY50Q9RB";
 
 // 토스페이먼츠 API는 시크릿 키를 사용자 ID로 사용하고, 비밀번호는 사용하지 않습니다.
