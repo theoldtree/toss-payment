@@ -42,11 +42,11 @@
         const tossPayments = TossPayments(clientKey);
         // 회원 결제
         // @docs https://docs.tosspayments.com/sdk/v2/js#tosspaymentswidgets
-        const widgets = tossPayments.widgets({
-          customerKey,
-        });
+        //const widgets = tossPayments.widgets({
+        //  customerKey,
+        // });
         // 비회원 결제
-        // const widgets = tossPayments.widgets({customerKey: TossPayments.ANONYMOUS});
+        const widgets = tossPayments.widgets({customerKey: TossPayments.ANONYMOUS});
 
         // ------  주문서의 결제 금액 설정 ------
         // TODO: 위젯의 결제금액을 결제하려는 금액으로 초기화하세요.
