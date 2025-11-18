@@ -20,9 +20,7 @@ app.get("/api/health/", (req, res) => {
   res.status(200).send("OK");
 });
 
-app.get("/payment", (req, res) => {
-    res.sendFile("widget/checkout.html", { root: __dirname + "/public" });
-});
+app.use("/payment", express.static("public/widget"));
 
 // 결제위젯 승인
 app.post("/confirm/widget", function (req, res) {
