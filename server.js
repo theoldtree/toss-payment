@@ -17,9 +17,11 @@ const encryptedWidgetSecretKey = "Basic " + Buffer.from(widgetSecretKey + ":").t
 const encryptedApiSecretKey = "Basic " + Buffer.from(apiSecretKey + ":").toString("base64");
 
 app.get("/api/health/", (req, res) => {
-  // 서비스가 정상적으로 응답할 수 있음을 나타내는 200 OK 상태를 반환합니다.
-  // 응답 본문은 보통 'OK'나 'Healthy'를 사용합니다.
   res.status(200).send("OK");
+});
+
+app.get("/payment", (req, res) => {
+    res.sendFile("widget/checkout.html", { root: __dirname + "/public" });
 });
 
 // 결제위젯 승인
