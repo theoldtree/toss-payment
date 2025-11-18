@@ -7,14 +7,20 @@ app.use(express.json());
 
 // TODO: 개발자센터에 로그인해서 내 결제위젯 연동 키 > 시크릿 키를 입력하세요. 시크릿 키는 외부에 공개되면 안돼요.
 // @docs https://docs.tosspayments.com/reference/using-api/api-keys
-const widgetSecretKey = process.env.WIDGET_SECRET_KEY || "live_gsk_Poxy1XQL8Rl2wmz9a6LlV7nO5Wml";
-const apiSecretKey = process.env.API_SECRET_KEY || "live_sk_d26DlbXAaV0dZYoDlY4VqY50Q9RB";
+const widgetSecretKey = process.env.WIDGET_SECRET_KEY || "test_gck_26DlbXAaV07zqlkZXak13qY50Q9R";
+const apiSecretKey = process.env.API_SECRET_KEY || "test_sk_OyL0qZ4G1VODOoqBaBBroWb2MQYg";
 
 // 토스페이먼츠 API는 시크릿 키를 사용자 ID로 사용하고, 비밀번호는 사용하지 않습니다.
 // 비밀번호가 없다는 것을 알리기 위해 시크릿 키 뒤에 콜론을 추가합니다.
 // @docs https://docs.tosspayments.com/reference/using-api/authorization#%EC%9D%B8%EC%A6%9D
 const encryptedWidgetSecretKey = "Basic " + Buffer.from(widgetSecretKey + ":").toString("base64");
 const encryptedApiSecretKey = "Basic " + Buffer.from(apiSecretKey + ":").toString("base64");
+
+app.get("/api/health/", (req, res) => {
+  // 서비스가 정상적으로 응답할 수 있음을 나타내는 200 OK 상태를 반환합니다.
+  // 응답 본문은 보통 'OK'나 'Healthy'를 사용합니다.
+  res.status(200).send("OK");
+});
 
 // 결제위젯 승인
 app.post("/confirm/widget", function (req, res) {
@@ -222,5 +228,6 @@ app.post("/confirm-billing", function (req, res) {
     res.status(response.status).json(result);
   });
 });
+
 
 app.listen(port, () => console.log(`http://localhost:${port} 으로 샘플 앱이 실행되었습니다.`));

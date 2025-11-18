@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manycoresoft 결제 페이지</title>
+    <title>Manycoresoft 결제</title>
     <!-- SDK 추가 -->
     <script src="https://js.tosspayments.com/v2/standard"></script>
   </head>
@@ -19,7 +19,6 @@
         <div id="payment-method"></div>
         <!-- 이용약관 UI -->
         <div id="agreement"></div>
-        <!-- 쿠폰 체크박스 -->
         <!-- 결제하기 버튼 -->
         <button class="button" id="payment-button" style="margin-top: 30px">결제하기</button>
       </div>
@@ -31,13 +30,13 @@
         const button = document.getElementById("payment-button");
         const amount = {
           currency: "KRW",
-          value: 2750000,
+          value: 10000,
         };
         // ------  결제위젯 초기화 ------
         // TODO: clientKey는 개발자센터의 결제위젯 연동 키 > 클라이언트 키로 바꾸세요.
         // TODO: 구매자의 고유 아이디를 불러와서 customerKey로 설정하세요. 이메일・전화번호와 같이 유추가 가능한 값은 안전하지 않습니다.
         // @docs https://docs.tosspayments.com/sdk/v2/js#토스페이먼츠-초기화
-        const clientKey = "live_gck_Gv6LjeKD8aKKX4MEAbPMVwYxAdXy";
+        const clientKey = "test_gck_26DlbXAaV07zqlkZXak13qY50Q9R";
         const customerKey = generateRandomString();
         const tossPayments = TossPayments(clientKey);
         // 회원 결제
@@ -82,20 +81,10 @@
             orderName: "Deepgadget 유지보수 외 1건",
             successUrl: window.location.origin + "/widget/success.html",
             failUrl: window.location.origin + "/fail.html",
-            customerName: "강형원",
-            // 가상계좌 안내, 퀵계좌이체 휴대폰 번호 자동 완성에 사용되는 값입니다. 필요하다면 주석을 해제해 주세요.
-            customerMobilePhone: "01012341234",
+            customerName: "매니코어"
           });
         });
       }
-
-      document.getElementById("payment-window-button").addEventListener("click", () => {
-        location.href = "/payment/checkout.html";
-      });
-
-      document.getElementById("brandpay-button").addEventListener("click", () => {
-        location.href = "/brandpay/checkout.html";
-      });
 
       function generateRandomString() {
         return window.btoa(Math.random()).slice(0, 20);
